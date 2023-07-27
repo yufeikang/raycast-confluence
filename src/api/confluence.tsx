@@ -122,8 +122,8 @@ export function sortByLastViewed(recentItems: SearchResult[]) {
 }
 
 export async function fetchRecentlyViewed(site: Site, spaceKey?: string, signal?: AbortSignal) {
-  const cql = withCQLSpace("id in recentlyViewedContent(100)", spaceKey);
-  return fetchSearchByCql(site, cql, signal, SEARCH_EXPAND, 100);
+  const cql = withCQLSpace("id in recentlyViewedContent(20)", spaceKey);
+  return fetchSearchByCql(site, cql, signal, SEARCH_EXPAND, 20);
 }
 
 export function mapToSearchResult(item: any, links: any): SearchResult {

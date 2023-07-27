@@ -16,6 +16,7 @@ import {
   sortByLastViewed,
 } from "./api/confluence";
 import { Site } from "./api/site";
+import { cache } from "./api/util";
 import { SearchActions, SearchListItem } from "./SearchResults";
 import { useAuthorizeSite } from "./util/hooks";
 import { capitalize } from "./util/text";
@@ -31,7 +32,7 @@ export default function Command() {
     if (!site) {
       return;
     }
-    const spaces = await fetchFavouriteSpaces(site);
+    const spaces = await cache('spaces', () => fetchFavouriteSpaces(site));
     setSpaces(spaces);
   }, [site]);
 
