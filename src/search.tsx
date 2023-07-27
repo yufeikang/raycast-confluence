@@ -168,7 +168,7 @@ async function performSearch(
 
   if (searchText) {
     const searchResults = (await fetchSearchByText(
-      { site, text: searchText, includeAttachments: searchAttachments, spaceKey, sort },
+      { site, text: searchText, includeAttachments: searchAttachments, spaceKey },
       signal
     )) as any;
     return searchResults.results.map((item: any) => mapToSearchResult(item, searchResults._links));
